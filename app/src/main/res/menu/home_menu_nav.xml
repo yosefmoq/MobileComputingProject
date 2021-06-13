@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/news"
+        android:title="News"
+        android:icon="@drawable/newspaper"
+        />
+
+    <item
+        android:id="@+id/short_movies"
+        android:title="Short Movies"
+        android:icon="@drawable/clapperboard"
+        />
+
+    <item
+        android:id="@+id/Historical_events"
+        android:title="Historical events"
+        android:icon="@drawable/parchment"
+        />
+
+    <item android:id="@+id/settings"
+        android:title="Settings"
+        android:icon="@drawable/ic_baseline_settings"
+        />
+
+
+</menu>

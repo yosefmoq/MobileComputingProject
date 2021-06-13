@@ -1,8 +1,10 @@
-package com.app.mobilecomputingproject;
+package com.app.mobilecomputingproject.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.app.mobilecomputingproject.R;
 
 public class MainActivity extends AppCompatActivity {
 
