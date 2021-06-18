@@ -4,19 +4,19 @@
     <item
         android:id="@+id/news"
         android:title="News"
-        android:icon="@drawable/newspaper"
+        android:icon="@drawable/ic_newspaper"
         />
 
     <item
         android:id="@+id/short_movies"
         android:title="Short Movies"
-        android:icon="@drawable/clapperboard"
+        android:icon="@drawable/ic_baseline_movie_24"
         />
 
     <item
         android:id="@+id/Historical_events"
         android:title="Historical events"
-        android:icon="@drawable/parchment"
+        android:icon="@drawable/ic_history"
         />
 
     <item android:id="@+id/settings"
