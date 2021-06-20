@@ -13,7 +13,6 @@
     app:titleTextColor="@color/white"
     app:navigationContentDescription="side menu"
     android:background="#FBA21F"
-    app:navigationIcon="@drawable/ic_baseline_navigation"
     app:menu="@menu/home_menu">
 
 
