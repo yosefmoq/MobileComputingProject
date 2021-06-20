@@ -2,14 +2,21 @@ package com.app.mobilecomputingproject.ui.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 
 import com.app.mobilecomputingproject.R;
 import com.app.mobilecomputingproject.databinding.ActivitySplashBinding;
 import com.app.mobilecomputingproject.helper.MyDatabase;
 import com.app.mobilecomputingproject.helper.sharedPre.LocalSave;
+
+import java.util.Locale;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -18,6 +25,8 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setLocale(SplashActivity.this, LocalSave.getInstance(SplashActivity.this).getLang());
+
         activitySplashBinding = ActivitySplashBinding.inflate(LayoutInflater.from(this), null, false);
         setContentView(activitySplashBinding.getRoot());
         getSupportActionBar().hide();
@@ -58,4 +67,16 @@ public class SplashActivity extends AppCompatActivity {
         }.start();
 
     }
+    public void setLocale(Activity activity, String languageCode) {
+        Resources resources = getResources();
+        Configuration configuration = resources.getConfiguration();
+        DisplayMetrics displayMetrics = resources.getDisplayMetrics();
+        configuration.setLocale(new Locale(languageCode));
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {
+            activity.getApplicationContext().createConfigurationContext(configuration);
+        } else {
+            resources.updateConfiguration(configuration, displayMetrics);
+        }
+    }
+
 }

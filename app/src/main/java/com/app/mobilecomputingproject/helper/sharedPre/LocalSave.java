@@ -5,7 +5,7 @@ import android.content.Context;
 
 public class LocalSave {
     private static final String IS_FIRST      = "isFirstTime";
-
+    private static final String LANG = "lang";
     private static LocalSave instance = null;
     private Context mContext;
 
@@ -32,6 +32,12 @@ public class LocalSave {
     }
 
 
+    public void setLang(String lang){
+        SharedPrefs.save(getmContext(),LANG,lang);
+    }
+    public String getLang(){
+        return SharedPrefs.getString(getmContext(),LANG,"en");
+    }
 
 
 /*

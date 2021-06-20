@@ -4,15 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 
 import com.app.mobilecomputingproject.Models.InformationData;
 import com.app.mobilecomputingproject.R;
 import com.app.mobilecomputingproject.databinding.ActivityDetailsBinding;
 import com.app.mobilecomputingproject.helper.MyDatabase;
+import com.app.mobilecomputingproject.helper.sharedPre.LocalSave;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -21,6 +27,8 @@ public class DetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setLocale(DetailsActivity.this, LocalSave.getInstance(DetailsActivity.this).getLang());
+
         activityDetailsBinding = ActivityDetailsBinding.inflate(LayoutInflater.from(DetailsActivity.this),null,false);
         setContentView(activityDetailsBinding.getRoot());
         getData(typeA);
@@ -61,4 +69,16 @@ public class DetailsActivity extends AppCompatActivity {
         }
         activityDetailsBinding.tvDetails.setText(stringBuilder.toString());
     }
+    public void setLocale(Activity activity, String languageCode) {
+        Resources resources = getResources();
+        Configuration configuration = resources.getConfiguration();
+        DisplayMetrics displayMetrics = resources.getDisplayMetrics();
+        configuration.setLocale(new Locale(languageCode));
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {
+            activity.getApplicationContext().createConfigurationContext(configuration);
+        } else {
+            resources.updateConfiguration(configuration, displayMetrics);
+        }
+    }
+
 }

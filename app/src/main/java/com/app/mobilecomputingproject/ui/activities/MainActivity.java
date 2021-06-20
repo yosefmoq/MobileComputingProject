@@ -9,18 +9,25 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 
 import com.app.mobilecomputingproject.R;
 import com.app.mobilecomputingproject.databinding.ActivityMainBinding;
+import com.app.mobilecomputingproject.helper.sharedPre.LocalSave;
 import com.app.mobilecomputingproject.ui.fragments.history.HistoryFragment;
 import com.app.mobilecomputingproject.ui.fragments.home.HomeFragment;
 import com.app.mobilecomputingproject.ui.fragments.movies.MoviesFragment;
+import com.app.mobilecomputingproject.ui.fragments.setting.NewSettingsFragment;
 import com.app.mobilecomputingproject.ui.fragments.setting.SettingFragment;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationAdapter bottomNavigationAdapter;
@@ -28,10 +35,11 @@ public class MainActivity extends AppCompatActivity {
     private MenuItem prevMenuItem = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setLocale(MainActivity.this, LocalSave.getInstance(MainActivity.this).getLang());
         super.onCreate(savedInstanceState);
         activityMainBinding = ActivityMainBinding.inflate(LayoutInflater.from(MainActivity.this), null, false);
-        setContentView(activityMainBinding.getRoot());
 
+        setContentView(activityMainBinding.getRoot());
         bottomNavigationAdapter = new BottomNavigationAdapter(MainActivity.this);
         activityMainBinding.vp2.setAdapter(bottomNavigationAdapter);
 
@@ -90,7 +98,8 @@ public class MainActivity extends AppCompatActivity {
             fragments.add(HomeFragment.newInstance());
             fragments.add(MoviesFragment.newInstance());
             fragments.add(HistoryFragment.newInstance());
-            fragments.add(SettingFragment.newInstance());
+            fragments.add(new NewSettingsFragment());
+
         }
 
         @NonNull
@@ -103,5 +112,18 @@ public class MainActivity extends AppCompatActivity {
         public int getItemCount() {
             return fragments.size();
         }
+
     }
+    public void setLocale(Activity activity, String languageCode) {
+        Resources resources = getResources();
+        Configuration configuration = resources.getConfiguration();
+        DisplayMetrics displayMetrics = resources.getDisplayMetrics();
+        configuration.setLocale(new Locale(languageCode));
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {
+            activity.getApplicationContext().createConfigurationContext(configuration);
+        } else {
+            resources.updateConfiguration(configuration, displayMetrics);
+        }
+    }
+
 }

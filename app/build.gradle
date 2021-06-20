@@ -53,6 +53,7 @@ dependencies {
     implementation "com.google.android.exoplayer:exoplayer-core:2.10.5"
     implementation "com.google.android.exoplayer:exoplayer-dash:2.10.5"
     implementation "com.google.android.exoplayer:exoplayer-ui:2.10.5"
-
+    implementation "androidx.legacy:legacy-preference-v14:1.0.0"
+    implementation "androidx.preference:preference:1.1.1"
 }
 //apply plugin: 'com.google.gms.google-services'

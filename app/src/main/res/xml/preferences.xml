@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ListPreference
+        android:entryValues="@array/languages_values"
+        app:defaultValue="Arabic"
+        app:entries="@array/languages"
+        app:dialogTitle="Choose Language"
+        app:icon="@drawable/ic_baseline_language_24"
+        app:key="language"
+        app:title="Language" />
+
+    <ListPreference
+        android:entryValues="@array/themes_value"
+        app:defaultValue="light"
+        app:dialogTitle="Choose Theme"
+        app:entries="@array/themes"
+        app:icon="@drawable/ic_baseline_wb_sunny_24"
+        app:key="theme"
+        app:title="Theme" />
+
+    <SeekBarPreference
+        android:icon="@drawable/ic_baseline_font_download_24"
+        android:max="30"
+        app:defaultValue="14"
+        app:key="font_size"
+        app:min="10"
+        app:seekBarIncrement="2"
+        app:showSeekBarValue="true"
+        app:title="Font Size"
+        app:updatesContinuously="true" />
+
+
+ <!--   <SwitchPreferenceCompat
+        app:key="notifications"
+        app:icon="@drawable/ic_baseline_notifications"
+        app:title="Enable message notifications" />-->
+</PreferenceScreen>

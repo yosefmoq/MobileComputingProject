@@ -60,7 +60,7 @@ public class MoviesFragment extends Fragment {
                 VideoModel videoModel =documentSnapshot.toObject(VideoModel.class);
                 videoModels.add(videoModel);
             }
-            initVideo(videoModels.get(0).getLink());
+//            initVideo(videoModels.get(0).getLink());
             runningVideo = 1;
         });
         moviesFragmentBinding.btnNext.setOnClickListener(view1->{
